@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ComicApiResponse, comicsApi } from "../http/marvel_api";
 import { IComic } from "../models/Comic";
 import { v4 as uuidv4 } from "uuid";
@@ -18,7 +18,7 @@ export const useFetchComicsInfinite = (offset: number) => {
 
   // memo below could be done with transformResponse Axios callback but that would make
   // useAutoFetch more of a hassle to use because of too many params
-  useMemo(() => {
+  useEffect(() => {
     if (data) {
       const comicsWithId = data.data.results.map((comic) => ({
         ...comic,
