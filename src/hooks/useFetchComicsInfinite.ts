@@ -24,7 +24,13 @@ export const useFetchComicsInfinite = (offset: number) => {
         ...comic,
         uuid: uuidv4(),
       }));
-      setComics((prev) => prev.concat(comicsWithId));
+      // remove some if user hits more than lets say 1000?
+      setComics((prev) => {
+        if (prev.length > 1000) {
+          prev = prev.slice(800, 1000);
+        }
+        return prev.concat(comicsWithId);
+      });
     }
   }, [data]);
 
