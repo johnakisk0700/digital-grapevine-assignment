@@ -1,5 +1,6 @@
 import { IComic } from "../../models/Comic";
 import Card from "../atoms/Card/Card";
+import CardBody from "../atoms/Card/CardBody";
 import CardTitle from "../atoms/Card/CardTitle";
 import Chip from "../atoms/Chip";
 
@@ -11,8 +12,8 @@ function ComicCard({ comic }: Props) {
   const { thumbnail } = comic;
   const price = comic.prices[0];
   return (
-    <Card className="max-w-[300px] mx-auto bg-slate-800 p-3 text-white rounded-md text-center shadow-lg">
-      <div className="flex flex-col h-full gap-2">
+    <Card className="max-w-[300px] h-full mx-auto p-3 text-white rounded-md text-center shadow-lg">
+      <CardBody>
         <img
           src={thumbnail.path + "." + thumbnail.extension}
           className="h-[250px] mx-auto object-contain shadow-md shadow-black"
@@ -32,7 +33,7 @@ function ComicCard({ comic }: Props) {
             )}
           </div>
         </div>
-      </div>
+      </CardBody>
     </Card>
   );
 }

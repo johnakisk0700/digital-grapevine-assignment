@@ -7,7 +7,9 @@ type Props = {
 };
 
 function Card({ children, className }: Props & PropsWithChildren) {
-  return <div className={classnames(className, "h-full")}>{children}</div>;
+  return (
+    <div className={classnames(className, "bg-slate-800")}>{children}</div>
+  );
 }
 
 export default Card;
