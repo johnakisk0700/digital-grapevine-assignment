@@ -3,9 +3,8 @@ import { AxiosInstance } from "axios";
 
 export const useAutoFetch = <T>(
   api: AxiosInstance,
-  url: string,
-  config: string,
-  resCb?: (data: T) => {}
+  config: string = "",
+  url: string = ""
 ) => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<T>();

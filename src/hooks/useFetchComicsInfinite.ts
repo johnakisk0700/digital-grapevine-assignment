@@ -1,16 +1,8 @@
 import { useMemo, useState } from "react";
-import { comicsApi } from "../http/marvel_api";
+import { ComicApiResponse, comicsApi } from "../http/marvel_api";
 import { IComic } from "../models/Comic";
 import { v4 as uuidv4 } from "uuid";
 import { useAutoFetch } from "./useAutoFetch";
-
-interface ComicApiResponse {
-  data: {
-    offset: number;
-    total: number;
-    results: IComic[];
-  };
-}
 
 export const useFetchComicsInfinite = (offset: number) => {
   // we stringify the object and parse it again so that react diff algo
@@ -19,7 +11,6 @@ export const useFetchComicsInfinite = (offset: number) => {
   const config = JSON.stringify({ params: { offset: offset } });
   const { data, error, loading } = useAutoFetch<ComicApiResponse>(
     comicsApi,
-    "",
     config
   );
 
