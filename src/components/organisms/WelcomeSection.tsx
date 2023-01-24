@@ -1,5 +1,5 @@
 import React from "react";
-import MarvelLogo from "../../atoms/MarvelLogo";
+import MarvelLogo from "../atoms/MarvelLogo";
 
 type Props = {};
 

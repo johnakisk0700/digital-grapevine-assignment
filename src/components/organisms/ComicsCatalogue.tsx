@@ -9,23 +9,25 @@ import {
   WindowScroller as _WindowScroller,
   WindowScrollerProps,
 } from "react-virtualized";
-import { useFetchComics } from "../../../hooks/useFetchComics";
-import Loader from "../../atoms/Loader";
-import ComicCard from "../../molecules/ComicCard";
+import { useFetchComicsInfinite } from "../../hooks/useFetchComicsInfinite";
+import Loader from "../atoms/Loader";
+import ComicCard from "../molecules/ComicCard";
 
 // type cast because of incompatibilities between react versions
+// and react-virtualized having broken exports
 const WindowScroller = _WindowScroller as unknown as FC<WindowScrollerProps>;
 const List = _List as unknown as FC<ListProps>;
 const AutoSizer = _AutoSizer as unknown as FC<AutoSizerProps>;
 
 function ComicsCatalogue() {
   const [offset, setOffset] = useState(0);
-  const { comics, loading: loadingComics } = useFetchComics(offset);
+  const { comics, loading: loadingComics } = useFetchComicsInfinite(offset);
 
   const { ref, inView } = useInView({ threshold: 0 });
 
   useEffect(() => {
     if (inView) {
+      console.log("setting offset +20");
       setOffset((prev) => prev + 20);
     }
   }, [inView]);
@@ -63,7 +65,7 @@ function ComicsCatalogue() {
                 columnCount={5}
                 columnWidth={width / 5}
                 rowCount={comics.length}
-                rowHeight={300}
+                rowHeight={425}
                 width={width}
                 height={height}
               />

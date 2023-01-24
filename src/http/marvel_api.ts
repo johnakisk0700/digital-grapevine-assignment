@@ -7,6 +7,5 @@ export const comicsApi = axios.create({
   baseURL: baseUrl + "comics",
   params: {
     apikey: apiKey,
-    orderBy: "modified",
   },
 });

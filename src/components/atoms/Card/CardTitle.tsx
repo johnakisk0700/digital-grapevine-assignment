@@ -8,9 +8,7 @@ type Props = {
 
 function CardTitle({ children, className }: Props & PropsWithChildren) {
   return (
-    <h2 className={classnames(className, "text-xl font-bold line-clamp-3")}>
-      {children}
-    </h2>
+    <h2 className={classnames(className, "text-xl font-bold")}>{children}</h2>
   );
 }
 

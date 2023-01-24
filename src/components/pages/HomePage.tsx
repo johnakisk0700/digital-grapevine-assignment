@@ -1,10 +1,8 @@
-import ComicsCatalogue from "../organisms/ComicsCatalogue/ComicsCatalogue";
-import Header from "../organisms/Header/Header";
-import WelcomeSection from "../organisms/Welcome/WelcomeSection";
+import ComicsCatalogue from "../organisms/ComicsCatalogue";
+import Header from "../organisms/Header";
+import WelcomeSection from "../organisms/WelcomeSection";
 
-type Props = {};
-
-function HomePage({}: Props) {
+function HomePage() {
   return (
     <div className="container mx-auto">
       <Header />
