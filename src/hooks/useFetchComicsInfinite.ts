@@ -24,8 +24,8 @@ export const useFetchComicsInfinite = (offset: number) => {
         ...comic,
         uuid: uuidv4(),
       }));
-      // remove some if user hits more than lets say 1000?
       setComics((prev) => {
+        // remove some if user hits more than lets say 1000?
         if (prev.length > 1000) {
           prev = prev.slice(800, 1000);
         }
