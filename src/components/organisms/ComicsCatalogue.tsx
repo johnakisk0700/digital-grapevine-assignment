@@ -21,16 +21,22 @@ const AutoSizer = _AutoSizer as unknown as FC<AutoSizerProps>;
 
 function ComicsCatalogue() {
   const [offset, setOffset] = useState(0);
-  const { comics, loading: loadingComics } = useFetchComicsInfinite(offset);
+  const {
+    comics,
+    loading: loadingComics,
+    error,
+  } = useFetchComicsInfinite(offset);
 
   const { ref, inView } = useInView({ threshold: 0 });
 
   useEffect(() => {
-    if (inView) {
-      console.log("setting offset +20");
-      setOffset((prev) => prev + 20);
+    // ERR_CANCELED because of strict mode double hooks
+    if (!error || error.message === "canceled") {
+      if (inView) {
+        setOffset((prev) => prev + 20);
+      }
     }
-  }, [inView]);
+  }, [inView, error]);
 
   function rowRenderer({
     index, // Index of row
@@ -76,6 +82,9 @@ function ComicsCatalogue() {
 
       <div ref={ref} className="h-8 w-8"></div>
       {loadingComics ? <Loader /> : null}
+      {error ? (
+        <div className="text-red-700 text-center">{error.message}</div>
+      ) : null}
     </div>
   );
 }

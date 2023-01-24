@@ -22,6 +22,7 @@ export const useAutoFetch = <T>(
         });
 
         setData(data);
+        setError(undefined);
       } catch (e) {
         setError(e);
       } finally {
