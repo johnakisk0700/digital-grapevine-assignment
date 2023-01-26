@@ -80,8 +80,7 @@ function ComicsCatalogue() {
         )}
       </WindowScroller>
 
-      {!loadingComics ? <div ref={ref} className="h-8 w-8"></div> : ""}
-      {loadingComics ? <Loader /> : null}
+      {!loadingComics ? <div ref={ref} /> : <Loader />}
       {error ? (
         <div className="text-red-700 text-center">{error.message}</div>
       ) : null}
